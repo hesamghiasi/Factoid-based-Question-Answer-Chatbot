@@ -13,7 +13,7 @@ import re
 import sys
 
 if len(sys.argv) == 1:
-	print("Bot> I need some reference to answer your question")
+	print("ربات -> ")
 	print("Bot> Please! Rerun me using following syntax")
 	print("\t\t$ python3 P2.py <datasetName>")
 	print("Bot> You can find dataset name in \"dataset\" folder")
