@@ -6,26 +6,31 @@
 # Usage :
 #		$ python3 P2.py dataset/IPod
 
-print("Bot> Please wait, while I am loading my dependencies")
+print("ربات> Please wait, while I am loading my dependencies")
 from DocumentRetrievalModel import DocumentRetrievalModel as DRM
 from ProcessedQuestion import ProcessedQuestion as PQ
 import re
 import sys
 
 if len(sys.argv) == 1:
-	print("ربات -> ")
-	print("Bot> Please! Rerun me using following syntax")
-	print("\t\t$ python3 P2.py <datasetName>")
-	print("Bot> You can find dataset name in \"dataset\" folder")
-	print("Bot> Thanks! Bye")
-	exit()
+	try:
+		datasetFile = open("dataset/windows_8.txt","r")
+	except FileNotFoundError:
+		print("ربات> فایلی یافت نشد")
+		exit()
+	# print("ربات -> ")
+	# print("ربات> Please! Rerun me using following syntax")
+	# print("\t\t$ python3 P2.py <datasetName>")
+	# print("ربات> You can find dataset name in \"dataset\" folder")
+	# print("ربات> Thanks! Bye")
+	# exit()
 
 datasetName = sys.argv[1]
 # Loading Dataset
 try:
 	datasetFile = open(datasetName,"r")
 except FileNotFoundError:
-	print("Bot> Oops! I am unable to locate \"" + datasetName + "\"")
+	print("ربات> Oops! I am unable to locate \"" + datasetName + "\"")
 	exit()
 
 # Retrieving paragraphs : Assumption is that each paragraph in dataset is
@@ -38,8 +43,8 @@ for para in datasetFile.readlines():
 # Processing Paragraphs
 drm = DRM(paragraphs,True,True)
 
-print("Bot> Hey! I am ready. Ask me factoid based questions only :P")
-print("Bot> You can say me Bye anytime you want")
+print("ربات> Hey! I am ready. Ask me factoid based questions only :P")
+print("ربات> You can say me Bye anytime you want")
 
 # Greet Pattern
 greetPattern = re.compile("^\ *((hi+)|((good\ )?morning|evening|afternoon)|(he((llo)|y+)))\ *$",re.IGNORECASE)
@@ -48,7 +53,7 @@ isActive = True
 while isActive:
 	userQuery = input("You> ")
 	if(not len(userQuery)>0):
-		print("Bot> You need to ask something")
+		print("ربات> You need to ask something")
 
 	elif greetPattern.findall(userQuery):
 		response = "Hello!"
@@ -61,4 +66,4 @@ while isActive:
 
 		# Get Response From Bot
 		response =drm.query(pq)
-	print("Bot>",response)
+	print("ربات>",response)
