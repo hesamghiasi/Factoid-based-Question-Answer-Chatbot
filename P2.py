@@ -43,22 +43,22 @@ for para in datasetFile.readlines():
 # Processing Paragraphs
 drm = DRM(paragraphs,True,True)
 
-print("ربات> Hey! I am ready. Ask me factoid based questions only :P")
-print("ربات> You can say me Bye anytime you want")
+print("ربات> من آماده هستم. از من سؤال بپرس")
+print("ربات> هر وقت خواستی بری فقط بگو بای")
 
 # Greet Pattern
-greetPattern = re.compile("^\ *((hi+)|((good\ )?morning|evening|afternoon)|(he((llo)|y+)))\ *$",re.IGNORECASE)
+greetPattern = re.compile("^\ *((سلام+)|((بخیر\ )?صبح|ظهر|شب)|(he((llo)|y+)))\ *$",re.IGNORECASE)
 
 isActive = True
 while isActive:
-	userQuery = input("You> ")
+	userQuery = input("شما> ")
 	if(not len(userQuery)>0):
-		print("ربات> You need to ask something")
+		print("ربات> یک سؤال بپرسید")
 
 	elif greetPattern.findall(userQuery):
-		response = "Hello!"
-	elif userQuery.strip().lower() == "bye":
-		response = "Bye Bye!"
+		response = "سلام!"
+	elif userQuery.strip().lower() == "بای":
+		response = "خدانگهدار!"
 		isActive = False
 	else:
 		# Proocess Question

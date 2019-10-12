@@ -20,6 +20,7 @@
 #                       ["PERSON","LOCATION","DATE","DEFINITION","YESNO"]
 #               
 
+from hazm import POSTagger
 from nltk import pos_tag,word_tokenize,ne_chunk
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import wordnet,stopwords
@@ -39,6 +40,8 @@ class ProcessedQuestion:
         self.searchQuery = self.buildSearchQuery(question)
         self.qVector = self.getQueryVector(self.searchQuery)
         self.aType = self.determineAnswerType(question)
+        post = POSTagger()
+        
     
     # To determine type of question by analyzing POS tag of question from Penn 
     # Treebank tagset
