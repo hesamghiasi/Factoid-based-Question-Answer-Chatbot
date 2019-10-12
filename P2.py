@@ -6,7 +6,7 @@
 # Usage :
 #		$ python3 P2.py dataset/IPod
 
-print("ربات> Please wait, while I am loading my dependencies")
+print("ربات> در حال بارگذاری وابستگی ها. لطفا صبر کنید")
 from DocumentRetrievalModel import DocumentRetrievalModel as DRM
 from ProcessedQuestion import ProcessedQuestion as PQ
 import re
@@ -14,7 +14,7 @@ import sys
 
 if len(sys.argv) == 1:
 	try:
-		datasetFile = open("dataset/windows_8.txt","r")
+		datasetFile = open("./dataset/windows_8.txt","r")
 	except FileNotFoundError:
 		print("ربات> فایلی یافت نشد")
 		exit()
@@ -24,14 +24,14 @@ if len(sys.argv) == 1:
 	# print("ربات> You can find dataset name in \"dataset\" folder")
 	# print("ربات> Thanks! Bye")
 	# exit()
-
-datasetName = sys.argv[1]
-# Loading Dataset
-try:
-	datasetFile = open(datasetName,"r")
-except FileNotFoundError:
-	print("ربات> Oops! I am unable to locate \"" + datasetName + "\"")
-	exit()
+else:
+	datasetName = sys.argv[1]
+	# Loading Dataset
+	try:
+		datasetFile = open(datasetName,"r")
+	except FileNotFoundError:
+		print("ربات> Oops! I am unable to locate \"" + datasetName + "\"")
+		exit()
 
 # Retrieving paragraphs : Assumption is that each paragraph in dataset is
 # separated by new line character
